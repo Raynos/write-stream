@@ -2,6 +2,8 @@
 
 var Stream = require("stream")
 
+to.end = defaultEnd
+
 module.exports = to
 
 function to(write, end) {
@@ -27,7 +29,7 @@ function to(write, end) {
     }
 
     function endArray() {
-        end.call(this, write)
+        end.call(this)
         this.emit("end")
     }
 

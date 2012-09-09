@@ -2,15 +2,32 @@
 
 Base class for writable streams
 
-## Example
+## Example array
 
 ```
 var to = require("write-stream")
-    , from = require("read-stream")
+    , array = []
+    , stream = to(array, function end() {
+        /* never called as process.stdin does not end */
+    })
 
-from([1,2,3,4]).pipe(to([], function (array) {
-    assert.equal([1,2,3,4], array)
-}))
+process.stdin.pipe(stream)
+
+setInterval(function () {
+    // peek at the buffered array of chunks from stdin every second
+    console.log(array)
+}, 1000)
+```
+
+## Example function
+
+```
+var to = require("write-stream")
+    , stream = to(function write(chunk) {
+        // chunks from stdin
+    })
+
+process.stdin.pipe(stream)
 ```
 
 ## Installation

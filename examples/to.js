@@ -1,8 +1,9 @@
 var to = require("..")
     , Stream = require("readable-stream")
 
-var out1 = to([], function (list) {
-    console.log("out", list)
+var buffer1 = []
+var out1 = to(buffer1, function () {
+    console.log("out", buffer1)
 })
 
 createInput().pipe(out1)
