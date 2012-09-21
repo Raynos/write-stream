@@ -42,6 +42,7 @@ function createInput() {
             s.end()
         }
     }
+
     s.end = function () {
         s.emit("end")
     }
