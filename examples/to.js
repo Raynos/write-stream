@@ -1,8 +1,8 @@
 var to = require("..")
+    , toArray = require("../array")
     , Stream = require("readable-stream")
 
-var buffer1 = []
-var out1 = to(buffer1, function () {
+var out1 = toArray([], function (buffer1) {
     console.log("out", buffer1)
 })
 

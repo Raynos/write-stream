@@ -5,14 +5,10 @@ to.end = defaultEnd
 module.exports = to
 
 function to(write, end) {
-    end = end || defaultEnd
-
-    if (Array.isArray(write)) {
-        return toArray(write, end)
-    }
-
     var stream = new Stream()
         , ended = false
+
+    end = end || defaultEnd
 
     stream.write = handleWrite
     stream.end = handleEnd
@@ -34,14 +30,6 @@ function to(write, end) {
             stream.write(chunk)
         }
         end.call(stream)
-    }
-}
-
-function toArray(array, end) {
-    return to(writeArray, end)
-
-    function writeArray(chunk) {
-        array.push(chunk)
     }
 }
 
