@@ -5,9 +5,9 @@ Base class for writable streams
 ## Example array
 
 ```
-var to = require("write-stream")
+var toArray = require("write-stream").toArray
     , array = []
-    , stream = to(array, function end() {
+    , stream = toArray(array, function end() {
         /* never called as process.stdin does not end */
     })
 
@@ -22,8 +22,8 @@ setInterval(function () {
 ## Example function
 
 ```
-var to = require("write-stream")
-    , stream = to(function write(chunk) {
+var WriteStream = require("write-stream")
+    , stream = WriteStream(function write(chunk) {
         // chunks from stdin
     })
 

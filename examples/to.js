@@ -1,5 +1,5 @@
-var to = require("..")
-    , toArray = require("../array")
+var WriteStream = require("..")
+    , toArray = WriteStream.toArray
     , Stream = require("readable-stream")
 
 var out1 = toArray([], function (buffer1) {
@@ -9,7 +9,7 @@ var out1 = toArray([], function (buffer1) {
 createInput().pipe(out1)
 
 var buffer2 = []
-var out2 = to(function write(chunk) {
+var out2 = WriteStream(function write(chunk) {
     buffer2.push(chunk)
 }, function end() {
     console.log("out", buffer2)
@@ -18,7 +18,7 @@ var out2 = to(function write(chunk) {
 createInput().pipe(out2)
 
 var buffer3 = []
-var out3 = to(function write(chunk) {
+var out3 = WriteStream(function write(chunk) {
     var stream = this
     buffer3.push(chunk)
     setTimeout(function () {

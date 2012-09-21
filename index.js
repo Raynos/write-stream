@@ -1,10 +1,12 @@
 var Stream = require("stream")
 
-to.end = defaultEnd
+WriteStream.end = defaultEnd
 
-module.exports = to
+module.exports = WriteStream
 
-function to(write, end) {
+WriteStream.toArray = require("./array")
+
+function WriteStream(write, end) {
     var stream = new Stream()
         , ended = false
 
