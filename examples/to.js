@@ -39,12 +39,8 @@ function createInput() {
         if (++count < 5) {
             return count
         } else {
-            s.end()
+            s.emit("end")
         }
-    }
-
-    s.end = function () {
-        s.emit("end")
     }
 
     return s

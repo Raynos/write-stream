@@ -1,7 +1,5 @@
 var Stream = require("stream")
 
-WriteStream.end = defaultEnd
-
 module.exports = WriteStream
 
 WriteStream.toArray = require("./array")
@@ -10,7 +8,7 @@ function WriteStream(write, end) {
     var stream = new Stream()
         , ended = false
 
-    end = end || defaultEnd
+    end = end || noop
 
     stream.write = handleWrite
     stream.end = handleEnd
@@ -35,6 +33,4 @@ function WriteStream(write, end) {
     }
 }
 
-function defaultEnd() {
-    this.emit("end")
-}
+function noop() {}
