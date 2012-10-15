@@ -8,7 +8,7 @@ function WriteStream(write, end) {
     var stream = new Stream()
         , ended = false
 
-    end = end || noop
+    end = end || defaultEnd
 
     stream.write = handleWrite
     stream.end = handleEnd
@@ -33,4 +33,6 @@ function WriteStream(write, end) {
     }
 }
 
-function noop() {}
+function defaultEnd() {
+    this.emit("finish")
+}
