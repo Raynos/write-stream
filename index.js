@@ -13,6 +13,9 @@ function WriteStream(write, end) {
     stream.write = handleWrite
     stream.end = handleEnd
 
+    // Support 0.8 pipe [LEGACY]
+    stream.writable = true
+
     return stream
 
     function handleWrite(chunk) {
