@@ -1,6 +1,6 @@
 {
   "name": "write-stream",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Base class for writable streams",
   "keywords": [],
   "author": "Raynos <raynos2@gmail.com>",
